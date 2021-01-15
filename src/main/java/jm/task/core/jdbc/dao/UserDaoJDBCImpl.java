@@ -20,25 +20,11 @@ public class UserDaoJDBCImpl implements UserDao {
         String sqlCommand = "CREATE TABLE users (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(45), lastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
 
         //создание таблицы
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlCommand)) { // создание объекта Statement
-//            DatabaseMetaData database = connection.getMetaData();
-//            ResultSet rs = database.getTables(null, null, "users", null);
-//            if (rs.next()) {
-//                System.out.println();
-//            }
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlCommand)) { // создание объекта prepareStatement
             preparedStatement.executeUpdate(sqlCommand);
         } catch (SQLException e) {
            e.printStackTrace();
         }
-//        String sqlCommand = "CREATE TABLE users (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(45), " +
-//                "lastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
-//
-//        try (Statement statement = connection.createStatement()) {
-//            //создание таблицы
-//            statement.executeUpdate(sqlCommand);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public void dropUsersTable() {
