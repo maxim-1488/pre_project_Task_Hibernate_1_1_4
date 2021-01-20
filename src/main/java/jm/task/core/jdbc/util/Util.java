@@ -40,6 +40,7 @@ public class Util {
 
         SessionFactory sessionFactory = null;
 
+
         try {
             Configuration configuration = new Configuration();
             //Настройки Hibernate эквивалентны свойствам hibernate.cfg.xml
@@ -60,7 +61,7 @@ public class Util {
             properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
             //HBM2DDL_AUTO Автоматический экспорт / обновление схемы с помощью инструмента hbm2ddl.
-            properties.put(Environment.HBM2DDL_AUTO, "create-drop");
+            properties.put(Environment.HBM2DDL_AUTO, "update");
 
             configuration.setProperties(properties);
             configuration.addAnnotatedClass(User.class);
