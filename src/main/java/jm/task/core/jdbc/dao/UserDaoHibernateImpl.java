@@ -4,7 +4,6 @@ import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +83,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            session.createQuery("FROM User").list();
+            list = session.createQuery("FROM User").list();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
